@@ -7,3 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.TopNav {
+  text-align: center;
+}
+
+.TopNav ul {
+  list-style-type: none;
+}
+
+.TopNav ul li {
+  display: inline-block;
+  *display: inline;
+  margin: 0 1rem;
+  font-size: 1.25rem;
+}
