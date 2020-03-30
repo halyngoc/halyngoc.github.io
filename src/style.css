@@ -5,10 +5,21 @@ body {
   font-family: 'Lato', sans-serif;;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: grid;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  grid-template-areas:
+    "header"
+    "main";
+  gap: 1.25rem;
 }
 
 .TopNav {
   text-align: center;
+  grid-area: header;
 }
 
 .TopNav ul {
@@ -20,4 +31,30 @@ body {
   *display: inline;
   margin: 0 1rem;
   font-size: 1.25rem;
+  cursor: default;
+}
+
+.page {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(4, fr);
+  gap: 1.25rem;
+}
+
+.nameTitle {
+  grid-area: 2 / 2 / 3 / 4;
+}
+
+.name {
+  font-family: 'Stardos Stencil';
+  font-size: 4.5rem;
+}
+
+.jobTitle {
+  font-size: 2.25rem;
+}
+
+.logo {
+  grid-area: 3 / 7 / 5 / 12;
 }

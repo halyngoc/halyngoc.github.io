@@ -1,9 +1,17 @@
 import React from 'react';
+import '../style.css';
+import logo from '../assets/logo.svg';
 
 export default function HomePage() {
   return (
-    <div>
-      Home page
+    <div className='page'>
+      <div className="nameTitle">
+        <div className="name">Ha Ly,</div>
+        <div className="jobTitle">Web developer</div>
+      </div>
+      <div className='logo'>
+        <img src={logo} alt="Logo" height='100%' width='100%'/>
+      </div>
     </div>
   )
 }
