@@ -10,7 +10,7 @@ export default function HomePage() {
         <div className="jobTitle">Web developer</div>
       </div>
       <div className='logo'>
-        <img src={logo} alt="Logo" height='100%' width='100%'/>
+        <img draggable="false" src={logo} alt="Logo" height='100%' width='100%'/>
       </div>
     </div>
   )
