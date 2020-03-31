@@ -5,12 +5,13 @@ body {
   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .App {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-items: center;
 }
 
 .TopNav {
@@ -19,10 +20,12 @@ body {
 
 .page {
   margin: 1rem;
+  width: 100%;
 }
 
 .nameTitle {
   text-align: center;
+  margin-top: 2rem;
 }
 
 .name {
@@ -36,7 +39,7 @@ body {
 }
 
 .logo {
-  margin: 10%;
+  margin: 4rem 1rem 0 1rem;
   max-width: 500px;
   display: grid;
   gap: 0.75rem;
@@ -68,23 +71,18 @@ body {
 @media (min-width: 550px) {
   .App {
     width: 100%;
-    display: grid;
-    grid-template-rows: 5rem auto;
-    grid-template-areas:
-      "header"
-      "main";
+    display: inline-block;
   }
 
   .TopNav {
-    grid-area: header;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-block;
+    width: 100%;
   }
 
   .TopNav ul {
     list-style-type: none;
+    padding: 0;
   }
 
   .TopNav ul li {
@@ -94,9 +92,18 @@ body {
     cursor: default;
   }
 
+  .page {
+    margin: 0;
+    display: inline-block;
+    text-align: center;
+  }
+
   .name {
-    font-family: 'Stardos Stencil';
     font-size: 3.5rem;
+  }
+
+  .logo {
+    margin: 6rem auto 0 auto;
   }
 
   .jobTitle {
@@ -107,7 +114,8 @@ body {
 @media (min-width: 979px) {
   .App {
     display: grid;
-    grid-template-rows: 1fr 4fr;
+    grid-template-rows: 5rem auto;
+    grid-template-columns: 100%;
     grid-template-areas:
       "header"
       "main";
@@ -118,6 +126,7 @@ body {
     display: inline-block;
     text-align: center;
     grid-area: header;
+    align-self: center;
   }
 
   .TopNav ul {
@@ -133,20 +142,22 @@ body {
   }
 
   .page {
+    margin: 0;
     grid-area: main;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(4, fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 1.25rem;
   }
 
   .nameTitle {
+    margin: 0;
     text-align: left;
     grid-area: 2 / 2 / 3 / 13;
+    align-self: end;
   }
 
   .name {
-    font-family: 'Stardos Stencil';
     font-size: 4.5rem;
   }
 
@@ -156,5 +167,8 @@ body {
 
   .logo {
     grid-area: 3 / 7 / 5 / 12;
+    margin: 0;
+    max-width: 950px;
+    align-self: start;
   }
 }

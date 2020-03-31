@@ -13,8 +13,7 @@ const trans = (x, y) => `translate3d(${x}px, ${y}px, 0)`;
 
 export default function InteractableLogo() {
   const [trail, setTrail] = useTrail(4, () => ({ xy: [0, 0], config: trailConfig }));
-
-  const gestureBind = useDrag(({ down, movement: [x, y] }) => setTrail({ xy: [down ? x : 0, down ? y: 0] }));
+  const gestureBind = useDrag(({ down, movement: [x, y] }) => setTrail({ xy: [down ? x : 0, down ? y : 0] }));
 
   return (
     <div className='logo'>
@@ -29,6 +28,7 @@ export default function InteractableLogo() {
             src={logoSvgs[index]}
             alt={'logo p' + (index + 1)}
             draggable={false}
+            width='100%'
           />
         </animated.div>
       ))}
