@@ -1,14 +1,18 @@
 import React from 'react';
 import HomePage from './components/HomePage';
-import TopNav from './components/TopNav';
-import './style.css';
+import Nav from './components/Nav';
+import { theme, GlobalStyles } from './globalStyle'
+import { ThemeProvider } from 'styled-components'
 
 function App() {
   return (
-    <div className='App'>
-      <TopNav onTopNavItemClick={(item) => console.log(item)} />
-      <HomePage />
-    </div>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <div className='App'>
+        <Nav onItemClick={item => console.log(item)} />
+        <HomePage />
+      </div>
+    </ThemeProvider>
   );
 }
 
