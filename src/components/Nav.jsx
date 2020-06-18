@@ -3,9 +3,11 @@ import styled from 'styled-components'
 import { theme } from '../globalStyle'
 import { useDevice } from '../util'
 import { useSpring, animated } from 'react-spring'
+import { Link } from 'react-scroll'
 
 const HorizontalNav = styled.nav`
   position: fixed;
+  top: 0;
   background-color: ${theme.background};
   z-index: 1;
   width: 100%;
@@ -41,8 +43,8 @@ const HorizontalNav = styled.nav`
   }
 `
 
-function NavItem({ id, label, onClick, selectedItem }) {
-  const isSelected = selectedItem === id
+function NavItem({ itemId, label, onClick, selectedItem }) {
+  const isSelected = selectedItem === itemId
   const { x } = useSpring({ from: { x: 0 }, x: isSelected ? 1 : 0 })
 
   const style = isSelected ? {
@@ -55,21 +57,23 @@ function NavItem({ id, label, onClick, selectedItem }) {
   } : {}
 
   return (
-    <animated.button
-      onClick={() => onClick(id)}
-      style={style}
-    >
-      {label}
-    </animated.button>
+    <Link to={itemId} smooth duration={300}>
+      <animated.button
+        onClick={() => onClick(itemId)}
+        style={style}
+      >
+        {label}
+      </animated.button>
+    </Link>
   )
 }
 
 function NavContent({ onItemClick, selectedItem }) {
   return (
     <ul>
-      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} id="home" label="Home" /></li>
-      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} id="my work" label="My work" /></li>
-      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} id="my projects" label="My projects" /></li>
+      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} itemId="home" label="Home" /></li>
+      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} itemId="my work" label="My work" /></li>
+      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} itemId="my projects" label="My projects" /></li>
     </ul>
   )
 }

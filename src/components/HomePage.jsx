@@ -3,15 +3,15 @@ import styled from 'styled-components'
 import { theme } from '../globalStyle'
 import Logo from './Logo'
 
-const Page = styled.div`
+const Page = styled.section`
   overflow-x: hidden;
   position: relative;
-  width: 100%;
-  height: 1000px;
+  height: 900px;
+  padding-top: 5rem;
 `
 
 const GreetingText = styled.div`
-  margin: 1rem 2rem;
+  margin: 1rem 0 0 10%;
 
   p, span {
     font-family: Gloria Hallelujah, cursive;
@@ -39,7 +39,7 @@ const Watermark = styled.div`
 
 export default function HomePage() {
   return (
-    <Page>
+    <Page id="home">
       <GreetingText>
         <p>Hi, my name is <Name>Ha Ly</Name></p>
         <p>and I'm a <Title>web developer</Title>.</p>
