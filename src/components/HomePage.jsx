@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { theme } from '../globalStyle'
-import Logo from './Logo'
 import { Icon } from '@iconify/react'
 import githubAlt from '@iconify/icons-uil/github-alt'
 import envelopeIcon from '@iconify/icons-uil/envelope'
