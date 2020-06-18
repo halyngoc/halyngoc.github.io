@@ -6,46 +6,39 @@ import { Icon } from '@iconify/react'
 import githubAlt from '@iconify/icons-uil/github-alt'
 import envelopeIcon from '@iconify/icons-uil/envelope'
 import phoneIcon from '@iconify/icons-uil/phone'
+import fileIcon from '@iconify/icons-uil/file'
 import resume from '../resume.pdf'
+import { useDevice } from '../util'
 
 const Page = styled.section`
-  overflow-x: hidden;
-  position: relative;
   height: 900px;
   padding-top: 5rem;
 `
 
 const GreetingText = styled.div`
-  margin: 1rem 0 0 10%;
+  margin: ${props => props.isOneColumnLayout ? '1rem 0 0 0' : '1rem 0 0 10%'};
 
   p, span {
     font-family: Gloria Hallelujah, cursive;
-    font-size: 4.5rem;
+    font-size: ${props => props.isOneColumnLayout ? '2rem' : '3.5rem'};
     margin: 0;
+    text-align: ${props => props.isOneColumnLayout ? 'center' : 'left'};
   }
 `
 
 const Name = styled.span`
-  color: ${theme.accent};
+color: ${ theme.accent};
 `
 
 const Title = styled.span`
   color: ${theme.accent2};
 `
 
-const Watermark = styled.div`
-  position: absolute;
-  left: 40%;
-  top: 30%;
-  z-index: -1;
-  fill: ${theme.watermark};
-  transform: rotate(-10deg) scale(1.2);
-`
-
 const Contacts = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 3rem 0 0 10%;
+  margin: ${props => props.isOneColumnLayout ? '2rem auto 0 auto' : '3rem 0 0 10%'};
+  width: fit-content;
 
   li {
     margin-bottom: 1rem;
@@ -65,14 +58,15 @@ const Contacts = styled.ul`
 `
 
 export default function HomePage() {
+  const [, isOneColumnLayout] = useDevice()
+
   return (
     <Page id="home">
-      <GreetingText>
+      <GreetingText isOneColumnLayout={isOneColumnLayout}>
         <p>Hi, my name is <Name>Ha Ly</Name></p>
         <p>and I'm a <Title>web developer</Title>.</p>
       </GreetingText>
-      <Logo wrapper={Watermark} />
-      <Contacts>
+      <Contacts isOneColumnLayout={isOneColumnLayout}>
         <li>
           <a title="github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
             <Icon icon={githubAlt} />

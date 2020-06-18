@@ -1,4 +1,5 @@
 import React from 'react'
+import { useDevice } from '../util'
 
 function LogoSvg() {
   return (
@@ -15,9 +16,11 @@ function LogoSvg() {
 }
 
 export default function Logo({ wrapper }) {
+  const [, isOneColumnLayout] = useDevice()
+
   if (!wrapper) return <LogoSvg />
   else {
     const Wrapper = wrapper
-    return <Wrapper><LogoSvg /></Wrapper>
+    return <Wrapper isOneColumnLayout={isOneColumnLayout}><LogoSvg /></Wrapper>
   }
 }
