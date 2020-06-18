@@ -3,10 +3,15 @@ import styled from 'styled-components'
 import { theme } from '../globalStyle'
 import { useDevice } from '../util'
 import { useSpring, animated } from 'react-spring'
-import { useState } from 'react'
-import { useHover } from 'react-use-gesture'
 
 const HorizontalNav = styled.nav`
+  position: fixed;
+  background-color: ${theme.background};
+  z-index: 1;
+  width: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
   ul {
     list-style: none;
     padding: 0;
@@ -19,7 +24,7 @@ const HorizontalNav = styled.nav`
   }
 
   button {
-    background: none;
+    background-color: ${theme.background};
     border: 0;
     border-radius: 20px;
     font-size: 1rem;
@@ -40,42 +45,31 @@ function NavItem({ id, label, onClick, selectedItem }) {
   const isSelected = selectedItem === id
   const { x } = useSpring({ from: { x: 0 }, x: isSelected ? 1 : 0 })
 
+  const style = isSelected ? {
+    transform: x
+      .interpolate({
+        range: [0, 0.2, 1],
+        output: [1, 1.1, 1],
+      })
+      .interpolate(x => `scale(${x})`),
+  } : {}
+
   return (
     <animated.button
       onClick={() => onClick(id)}
-      style={{
-        transform: x
-          .interpolate({
-            range: [0, 0.2, 1],
-            output: [1, 1.1, 1],
-          })
-          .interpolate(x => `scale(${x})`),
-        boxShadow: x
-          .interpolate({ output: [0, 1] })
-          .interpolate(x => {
-            if (x === 0) return 'none'
-            else return `0 0 0 ${x}px ${theme.background}, 0 0 0 ${x + 3}px ${theme.text}`
-          }),
-      }}
+      style={style}
     >
       {label}
     </animated.button>
   )
 }
 
-function NavContent({ onItemClick, defaultItem }) {
-  const [selectedItem, setSelectedItem] = useState(defaultItem || 'home')
-
-  const onNavItemClick = itemId => {
-    setSelectedItem(itemId)
-    onItemClick(itemId)
-  }
-
+function NavContent({ onItemClick, selectedItem }) {
   return (
     <ul>
-      <li><NavItem onClick={onNavItemClick} selectedItem={selectedItem} id="home" label="Home" /></li>
-      <li><NavItem onClick={onNavItemClick} selectedItem={selectedItem} id="my work" label="My work" /></li>
-      <li><NavItem onClick={onNavItemClick} selectedItem={selectedItem} id="my projects" label="My projects" /></li>
+      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} id="home" label="Home" /></li>
+      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} id="my work" label="My work" /></li>
+      <li><NavItem onClick={onItemClick} selectedItem={selectedItem} id="my projects" label="My projects" /></li>
     </ul>
   )
 }

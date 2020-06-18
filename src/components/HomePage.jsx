@@ -4,10 +4,15 @@ import { theme } from '../globalStyle'
 import Logo from './Logo'
 
 const Page = styled.div`
-  margin: 1rem 2rem;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  height: 1000px;
 `
 
 const GreetingText = styled.div`
+  margin: 1rem 2rem;
+
   p, span {
     font-family: Gloria Hallelujah, cursive;
     font-size: 4.5rem;
@@ -25,11 +30,11 @@ const Title = styled.span`
 
 const Watermark = styled.div`
   position: absolute;
-  left: 40vw;
-  top: 40%;
+  left: 40%;
+  top: 30%;
   z-index: -1;
   fill: ${theme.watermark};
-  transform: rotate(-10deg);
+  transform: rotate(-10deg) scale(1.2);
 `
 
 export default function HomePage() {
