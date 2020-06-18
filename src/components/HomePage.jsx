@@ -74,26 +74,26 @@ export default function HomePage() {
       <Logo wrapper={Watermark} />
       <Contacts>
         <li>
-          <a href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
+          <a title="github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
             <Icon icon={githubAlt} />
             github.com/halyngoc
           </a>
         </li>
         <li>
-          <a href="mailto:haly.inbox@gmail.com">
+          <a title="email" href="mailto:haly.inbox@gmail.com">
             <Icon icon={envelopeIcon} />
             haly.inbox@gmail.com
           </a>
         </li>
         <li>
-          <a href="tel:971-213-3036">
+          <a title="phone" href="tel:971-213-3036">
             <Icon icon={phoneIcon} />
             971-213-3036
           </a>
         </li>
         <li>
-          <a href={resume} download="Ha_Ly_resume" target="_blank" rel="noopener noreferrer">
-            <Icon icon={githubAlt} />
+          <a title="resume" href={resume} download="Ha_Ly_resume" target="_blank" rel="noopener noreferrer">
+            <Icon icon={fileIcon} />
             resume (pdf, 158kb)
           </a>
         </li>
