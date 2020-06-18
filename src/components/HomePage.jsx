@@ -53,6 +53,18 @@ const Contacts = styled.ul`
     text-decoration: none;
     display: flex;
     align-items: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+  }
+
+  a:focus, a:hover {
+    outline: none;
+    box-shadow: 0 0 0 2px ${theme.text}7F;
+  }
+
+  a:active {
+    outline: none;
+    box-shadow: 0 0 0 2px ${theme.text};
   }
 `
 
