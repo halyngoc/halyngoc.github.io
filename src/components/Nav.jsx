@@ -8,6 +8,7 @@ import { Link } from 'react-scroll'
 const HorizontalNav = styled.nav`
   position: fixed;
   top: 0;
+  left: 0;
   background-color: ${theme.background};
   z-index: 1;
   width: 100%;

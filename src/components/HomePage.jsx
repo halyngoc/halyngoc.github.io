@@ -16,7 +16,7 @@ const Page = styled.section`
 `
 
 const GreetingText = styled.div`
-  margin: ${props => props.isOneColumnLayout ? '1rem 0 0 0' : '1rem 0 0 10%'};
+  margin: ${props => props.isOneColumnLayout ? '1rem 0 0 0' : '1rem 0 0 5%'};
 
   p, span {
     font-family: Gloria Hallelujah, cursive;
@@ -37,7 +37,7 @@ const Title = styled.span`
 const Contacts = styled.ul`
   list-style: none;
   padding: 0;
-  margin: ${props => props.isOneColumnLayout ? '2rem auto 0 auto' : '3rem 0 0 10%'};
+  margin: ${props => props.isOneColumnLayout ? '2rem auto 0 auto' : '3rem 0 0 5%'};
   width: fit-content;
 
   li {
