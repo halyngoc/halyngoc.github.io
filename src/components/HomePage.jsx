@@ -99,7 +99,7 @@ export default function HomePage() {
         <li>
           <a title="resume" href={resume} download="Ha_Ly_resume" target="_blank" rel="noopener noreferrer">
             <Icon icon={fileIcon} />
-            resume (pdf, 158kb)
+            resume (pdf, 63kb)
           </a>
         </li>
       </Contacts>
