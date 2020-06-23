@@ -6,6 +6,7 @@ import githubAlt from '@iconify/icons-uil/github-alt'
 import envelopeIcon from '@iconify/icons-uil/envelope'
 import phoneIcon from '@iconify/icons-uil/phone'
 import fileIcon from '@iconify/icons-uil/file'
+import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
 import resume from '../resume.pdf'
 import { useDevice } from '../util'
 
@@ -82,6 +83,12 @@ export default function HomePage() {
           <a title="Github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
             <Icon icon={githubAlt} />
             github.com/halyngoc
+          </a>
+        </li>
+        <li>
+          <a title="LinkedIn" href="https://www.linkedin.com/in/halyngoc" target="_blank" rel="noopener noreferrer">
+            <Icon icon={linkedinAlt} />
+            linkedin.com/in/halyngoc
           </a>
         </li>
         <li>
