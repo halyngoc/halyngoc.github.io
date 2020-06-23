@@ -79,7 +79,7 @@ export default function HomePage() {
       </GreetingText>
       <Contacts isOneColumnLayout={isOneColumnLayout}>
         <li>
-          <a title="github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
+          <a title="Github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
             <Icon icon={githubAlt} />
             github.com/halyngoc
           </a>
@@ -99,7 +99,7 @@ export default function HomePage() {
         <li>
           <a title="resume" href={resume} download="Ha_Ly_resume" target="_blank" rel="noopener noreferrer">
             <Icon icon={fileIcon} />
-            resume (pdf, 63kb)
+            resume (pdf, 64kb)
           </a>
         </li>
       </Contacts>
