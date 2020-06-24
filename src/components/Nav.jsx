@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { theme } from '../globalStyle'
 import { useDevice } from '../util'
-import { useSpring, animated } from 'react-spring'
+import { useSpring, useTransition, animated } from 'react-spring'
 import { Link } from 'react-scroll'
 import { Icon } from '@iconify/react'
 import barsIcon from '@iconify/icons-uil/bars'
@@ -47,7 +47,7 @@ const HorizontalNav = styled.nav`
   }
 `
 
-const VerticalNav = styled.nav`
+const VerticalNav = styled(animated.nav)`
   position: fixed;
   top: 0;
   left: 0;
@@ -77,7 +77,8 @@ const VerticalNav = styled.nav`
     color: ${theme.text};
   }
 
-  > button {
+  > button,
+  > div > button {
     display: block;
     margin: 0.5rem auto 0.5rem 0.5rem;
     height: 2rem;
@@ -95,7 +96,8 @@ const VerticalNav = styled.nav`
     ;
   }
 
-  > button:active {
+  > button:active,
+  > div > button:active {
     outline: none;
     box-shadow:
       0 0 0 3px ${theme.background},
@@ -104,7 +106,7 @@ const VerticalNav = styled.nav`
   }
 `
 
-const Overlay = styled.div`
+const Overlay = styled(animated.div)`
   position: fixed;
   top: 0;
   left: 0;
@@ -160,29 +162,30 @@ function NavContent({ onItemClick, selectedItem }) {
 
 function MobileNav({ onItemClick, selectedItem }) {
   const [showNavContent, setShowNavContent] = useState(false)
+  const transitions = useTransition(showNavContent, null, {
+    from: { transform: 'translate3d(0, -100%, 0)' },
+    enter: { transform: 'translate3d(0, 0, 0)' },
+    leave: { transform: 'translate3d(0, -100%, 0)' },
+  })
 
   const onMobileNavItemClick = itemId => {
     onItemClick(itemId)
     setShowNavContent(false)
   }
 
-  if (!showNavContent) {
-    return (
-      <VerticalNav>
-        <button onClick={() => setShowNavContent(true)}><Icon icon={barsIcon} /></button>
-      </VerticalNav>
-    )
-  } else {
-    return (
-      <>
-        <VerticalNav>
+  return transitions.map(({ item, key, props }) =>
+    item
+      ? <>
+        <VerticalNav key={key} style={props}>
           <button onClick={() => setShowNavContent(false)}><Icon icon={multiplyIcon} /></button>
           <NavContent onItemClick={onMobileNavItemClick} selectedItem={selectedItem} />
         </VerticalNav>
-        <Overlay onClick={() => setShowNavContent(false)} />
+        <Overlay style={props} onClick={() => setShowNavContent(false)} />
       </>
-    )
-  }
+      : <VerticalNav key={key} style={props}>
+        <button onClick={() => setShowNavContent(true)}><Icon icon={barsIcon} /></button>
+      </VerticalNav>
+  )
 }
 
 export default function Nav(props) {
