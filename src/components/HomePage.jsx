@@ -9,11 +9,7 @@ import fileIcon from '@iconify/icons-uil/file'
 import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
 import resume from '../resume.pdf'
 import { useDevice } from '../util'
-
-const Page = styled.section`
-  height: 900px;
-  padding-top: 5rem;
-`
+import { Page } from './Page'
 
 const GreetingText = styled.div`
   margin: ${props => props.isOneColumnLayout ? '1rem 0 0 0' : '1rem 0 0 5%'};
@@ -73,7 +69,7 @@ export default function HomePage() {
   const [, isOneColumnLayout] = useDevice()
 
   return (
-    <Page id="home">
+    <Page id="home" isOneColumnLayout={isOneColumnLayout}>
       <GreetingText isOneColumnLayout={isOneColumnLayout}>
         <p>Hi, my name is <Name>Ha Ly</Name></p>
         <p>and I'm a <Title>web developer</Title>.</p>
