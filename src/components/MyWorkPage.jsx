@@ -23,7 +23,7 @@ const WorkList = styled.ul`
   }
 
   p {
-    margin: 0.5rem 0;
+    margin: 0.75rem 0;
   }
 
   > li {
