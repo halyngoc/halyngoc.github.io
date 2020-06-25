@@ -23,7 +23,7 @@ const GreetingText = styled.div`
 `
 
 const Name = styled.span`
-color: ${ theme.accent};
+color: ${theme.accent};
 `
 
 const Title = styled.span`
@@ -69,7 +69,7 @@ export default function HomePage() {
   const [, isOneColumnLayout] = useDevice()
 
   return (
-    <Page id="home" isOneColumnLayout={isOneColumnLayout}>
+    <Page id="home">
       <GreetingText isOneColumnLayout={isOneColumnLayout}>
         <p>Hi, my name is <Name>Ha Ly</Name></p>
         <p>and I'm a <Title>web developer</Title>.</p>
