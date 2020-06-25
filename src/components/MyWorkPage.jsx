@@ -22,6 +22,10 @@ const WorkList = styled.ul`
     background-color: ${theme.text};
   }
 
+  p {
+    margin: 0.5rem 0;
+  }
+
   > li {
     position: relative;
     margin: 0 0 2rem 2rem;
@@ -47,6 +51,26 @@ const WorkList = styled.ul`
   ul {
     list-style: inside circle;
     padding: 0;
+  }
+
+  ul:last-child {
+    margin-top: 0.75rem;
+    list-style: none;
+  }
+
+  ul:last-child > li {
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.25rem 0.25rem 0;
+    display: inline-block;
+    color: ${theme.background};
+    background-color: ${theme.accent}CC;
+    border-radius: 1rem;
+    cursor: default;
+  }
+
+  ul:last-child > li:hover,
+  ul:last-child > li:active {
+    background-color: ${theme.accent};
   }
 `
 
@@ -94,7 +118,12 @@ export default function MyWorkPage() {
             <p>{data.description}</p>
             <ul>
               {data.descriptionDetails.map((detailItem, detailKey) =>
-                <li key={`work-data-${key}-description-${detailItem}`}>{detailItem}</li>
+                <li key={`work-data-${key}-description-${detailKey}`}>{detailItem}</li>
+              )}
+            </ul>
+            <ul>
+              {data.tools.map((tool, toolKey) =>
+                <li key={`work-data-${key}-tool-${toolKey}`}>{tool}</li>
               )}
             </ul>
           </li>
