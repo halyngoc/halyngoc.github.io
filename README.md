@@ -11,4 +11,4 @@ Packages:
 - [react-spring](https://www.react-spring.io/)
 - [react-scroll](https://github.com/fisshy/react-scroll)
 
-![screenshot](./resources/screenshot.png)
+![screenshot](/public/resources/portfolio/screenshot.png)
