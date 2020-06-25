@@ -154,6 +154,7 @@ function NavContent({ onItemClick, selectedItem }) {
   return (
     <ul>
       <li><NavItem onClick={onItemClick} selected={selectedItem === 'home'} itemId="home" label="Home" /></li>
+      <li><NavItem onClick={onItemClick} selected={selectedItem === 'about me'} itemId="about me" label="About me" /></li>
       <li><NavItem onClick={onItemClick} selected={selectedItem === 'my work'} itemId="my work" label="My work" /></li>
       <li><NavItem onClick={onItemClick} selected={selectedItem === 'my projects'} itemId="my projects" label="My projects" /></li>
     </ul>

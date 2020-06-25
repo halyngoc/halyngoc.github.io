@@ -8,6 +8,7 @@ import MyProjectsPage from './components/MyProjectsPage'
 import styled from 'styled-components'
 import Logo from './components/Logo'
 import { useDevice } from './util'
+import AboutMePage from './components/AboutMePage';
 
 const Watermark = styled.div`
   position: absolute;
@@ -46,6 +47,7 @@ function App() {
         <Nav onItemClick={item => setCurrentPage(item)} selectedItem={currentPage} />
         <Logo wrapper={Watermark} />
         <HomePage />
+        <AboutMePage />
         <MyWorkPage />
         <MyProjectsPage />
       </AppContainer>
