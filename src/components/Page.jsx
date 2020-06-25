@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { theme } from '../globalStyle'
 
 export const Page = styled.section`
   min-height: 100vh;
@@ -14,5 +15,10 @@ export const Page = styled.section`
     font-weight: normal;
     text-align: center;
     font-size: 2rem;
+  }
+
+  h2 {
+    color: ${theme.accent};
+    font-size: 1.1rem;
   }
 `

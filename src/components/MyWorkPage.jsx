@@ -43,11 +43,6 @@ const WorkList = styled.ul`
     border-radius: 1rem;
   }
 
-  h2 {
-    color: ${theme.accent};
-    font-size: 1.1rem;
-  }
-
   ul {
     list-style: inside circle;
     padding: 0;
