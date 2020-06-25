@@ -14,16 +14,20 @@ import { portfolioScreenshots, kanabiScreenshots, recipediaScreenshots } from '.
 const ProjectList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: ${props => props.isOneColumnLayout ? '0 1rem' : '0 auto'};
+  margin: ${props => props.isOneColumnLayout ? '0' : '0 auto'};
   position: relative;
-  width: fit-content;
+  width: ${props => props.isOneColumnLayout ? '100%' : 'fit-content'};
+  display: flex;
+  flex-direction: column;
+  align-items: ${props => props.isOneColumnLayout ? 'center' : 'baseline'};
+  justify-content: center;
 
   * {
     text-align: ${props => props.isOneColumnLayout ? 'center' : 'left'}
   }
 
   > li {
-    margin: 0 1rem 1rem 0;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: ${props => props.isOneColumnLayout ? 'column' : 'row'};
     align-items: center;
@@ -62,14 +66,11 @@ const ProjectScreenshotsSlideshowWrapper = styled.div`
   img {
     border-radius: 1rem;
     border: 5px solid ${theme.accent2};
-    /* background-color: ${theme.accent2}; */
     width: 20rem;
     height: 20rem;
     position: absolute;
-    top: ${props => props.isOneColumnLayout ? 'auto' : '0'};
-    right: ${props => props.isOneColumnLayout ? 'auto' : '0'};
-    bottom: ${props => props.isOneColumnLayout ? '0' : 'auto'};
-    left: ${props => props.isOneColumnLayout ? '0' : 'auto'};
+    top: 0;
+    left: 0;
     object-fit: cover;
     object-position: 50% top;
   }
