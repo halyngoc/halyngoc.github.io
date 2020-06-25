@@ -83,7 +83,7 @@ export default function MyWorkPage() {
   const [, isOneColumnLayout] = useDevice()
 
   return (
-    <Page id="my work">
+    <Page id="my work" isOneColumnLayout={isOneColumnLayout}>
       <h1>My work</h1>
       <WorkList isOneColumnLayout={isOneColumnLayout}>
         {workData.map((data, key) =>

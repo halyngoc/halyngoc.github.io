@@ -69,7 +69,7 @@ export default function HomePage() {
   const [, isOneColumnLayout] = useDevice()
 
   return (
-    <Page id="home">
+    <Page id="home" isOneColumnLayout={isOneColumnLayout}>
       <GreetingText isOneColumnLayout={isOneColumnLayout}>
         <p>Hi, my name is <Name>Ha Ly</Name></p>
         <p>and I'm a <Title>web developer</Title>.</p>
