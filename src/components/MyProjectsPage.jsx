@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react'
 import { Page } from './Page'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { theme } from '../globalStyle'
 import { useDevice } from '../util'
 import { useTransition, animated } from 'react-spring'
@@ -14,22 +14,14 @@ import { portfolioScreenshots, kanabiScreenshots, recipediaScreenshots } from '.
 const ProjectList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: ${props => props.isOneColumnLayout ? '0' : '0 auto'};
   position: relative;
-  width: ${props => props.isOneColumnLayout ? '100%' : 'fit-content'};
   display: flex;
   flex-direction: column;
-  align-items: ${props => props.isOneColumnLayout ? 'center' : 'baseline'};
   justify-content: center;
-
-  * {
-    text-align: ${props => props.isOneColumnLayout ? 'center' : 'left'}
-  }
 
   > li {
     margin-bottom: 1rem;
     display: flex;
-    flex-direction: ${props => props.isOneColumnLayout ? 'column' : 'row'};
     align-items: center;
   }
 
@@ -52,9 +44,37 @@ const ProjectList = styled.ul`
     box-shadow: 0 0 0 2px ${theme.text};
   }
 
-  > li > div {
-    margin-left: ${props => props.isOneColumnLayout ? '0' : '2rem'};
-  }
+  ${({ isOneColumnLayout }) => isOneColumnLayout
+    ? css`
+      margin: 0;
+      width: 100%;
+      align-items: center;
+
+      * {
+        text-align: center;
+      }
+
+      > li {
+        flex-direction: column;
+      }
+    `
+    : css`
+      margin: 0 auto;
+      width: fit-content;
+      align-items: baseline;
+
+      * {
+        text-align: left;
+      }
+
+      > li {
+        flex-direction: row;
+      }
+
+      > li > div {
+        margin-left: 2rem;
+      }
+    `}
 `
 
 const ProjectScreenshotsSlideshowWrapper = styled.div`
