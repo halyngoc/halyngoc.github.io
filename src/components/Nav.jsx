@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react'
+import styled, { css } from 'styled-components'
 import { theme } from '../globalStyle'
 import { useDevice } from '../util'
 import { useSpring, useTransition, animated } from 'react-spring'
@@ -17,6 +17,9 @@ const HorizontalNav = styled.nav`
   width: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  ${(props) => !(props.isScrollAtTop) && css`
+    box-shadow: 0 5px 10px ${theme.text}7f;
+  `}
 
   ul {
     list-style: none;
@@ -56,6 +59,9 @@ const VerticalNav = styled(animated.nav)`
   width: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  ${(props) => !props.isScrollAtTop && css`
+    box-shadow: 0 5px 10px ${theme.text}7f;
+  `}
 
   ul {
     list-style: none;
@@ -177,11 +183,11 @@ function MobileNav({ onItemClick, selectedItem, onSelectedChange }) {
   return transitions.map(({ item, key, props }) =>
     item
       ? <>
-        <VerticalNav key={key} style={props}>
+        <VerticalNav key={key} style={props} >
           <button onClick={() => setShowNavContent(false)}><Icon icon={multiplyIcon} /></button>
           <NavContent onItemClick={onMobileNavItemClick} selectedItem={selectedItem} onSelectedChange={onSelectedChange} />
         </VerticalNav>
-        <Overlay style={props} onClick={() => setShowNavContent(false)} />
+        <Overlay key={`overlay-${key}`} style={props} onClick={() => setShowNavContent(false)} />
       </>
       : <VerticalNav key={key} style={props}>
         <button onClick={() => setShowNavContent(true)}><Icon icon={barsIcon} /></button>
@@ -191,7 +197,18 @@ function MobileNav({ onItemClick, selectedItem, onSelectedChange }) {
 
 export default function Nav(props) {
   const [, isOneColumnLayout] = useDevice()
+  const [isScrollAtTop, setIsScrollAtTop] = useState(true)
 
-  if (!isOneColumnLayout) return <HorizontalNav><NavContent {...props} /></HorizontalNav>
-  else return <MobileNav {...props} />
+  const onPageScroll = _ => {
+    if (window.scrollY === 0) setIsScrollAtTop(true)
+    else setIsScrollAtTop(false)
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', onPageScroll)
+    return () => window.removeEventListener('scroll', onPageScroll)
+  }, [])
+
+  if (!isOneColumnLayout) return <HorizontalNav isScrollAtTop={isScrollAtTop}><NavContent {...props} /></HorizontalNav>
+  else return <MobileNav isScrollAtTop={isScrollAtTop} {...props} />
 }
