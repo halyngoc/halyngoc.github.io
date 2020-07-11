@@ -7,6 +7,7 @@ import { Link } from 'react-scroll'
 import { Icon } from '@iconify/react'
 import barsIcon from '@iconify/icons-uil/bars'
 import multiplyIcon from '@iconify/icons-uil/multiply'
+import IconButton from './IconButton'
 
 const HorizontalNav = styled.nav`
   position: fixed;
@@ -50,18 +51,18 @@ const HorizontalNav = styled.nav`
   }
 `
 
-const VerticalNav = styled(animated.nav)`
+const ExpandedVerticalNav = styled(animated.nav)`
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
-  background-color: ${theme.background};
+  background-color: ${theme.text};
+  color: ${theme.text2};
   z-index: 2;
   width: 100%;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  ${(props) => !props.isScrollAtTop && css`
-    box-shadow: 0 5px 10px ${theme.text}7f;
-  `}
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 -5px 10px ${theme.text}7f;
+  padding: 0.5rem 0;
 
   ul {
     list-style: none;
@@ -75,19 +76,12 @@ const VerticalNav = styled(animated.nav)`
   }
 
   button {
-    background-color: ${theme.background};
+    background-color: ${theme.text};
     border: 0;
     border-radius: 20px;
     font-size: 1rem;
     font-weight: 500;
-    color: ${theme.text};
-  }
-
-  > button,
-  > div > button {
-    display: block;
-    margin: 0.5rem auto 0.5rem 0.5rem;
-    height: 2rem;
+    color: ${theme.text2};
   }
 
   svg {
@@ -97,8 +91,8 @@ const VerticalNav = styled(animated.nav)`
   button:focus, button:hover {
     outline: none;
     box-shadow:
-      0 0 0 3px ${theme.background},
-      0 0 0 5px ${theme.text}7F;
+      0 0 0 3px ${theme.text},
+      0 0 0 5px ${theme.text2}7f;
     ;
   }
 
@@ -106,10 +100,15 @@ const VerticalNav = styled(animated.nav)`
   > div > button:active {
     outline: none;
     box-shadow:
-      0 0 0 3px ${theme.background},
-      0 0 0 5px ${theme.text};
+      0 0 0 3px ${theme.text},
+      0 0 0 5px ${theme.text2};
     ;
   }
+`
+
+const CollapsedVerticalNav = styled(ExpandedVerticalNav)`
+  display: flex;
+  justify-content: space-between;
 `
 
 const Overlay = styled(animated.div)`
@@ -170,9 +169,9 @@ function NavContent({ onItemClick, selectedItem, onSelectedChange }) {
 function MobileNav({ onItemClick, selectedItem, onSelectedChange }) {
   const [showNavContent, setShowNavContent] = useState(false)
   const transitions = useTransition(showNavContent, null, {
-    from: { transform: 'translate3d(0, -100%, 0)' },
+    from: { transform: 'translate3d(0, 100%, 0)' },
     enter: { transform: 'translate3d(0, 0, 0)' },
-    leave: { transform: 'translate3d(0, -100%, 0)' },
+    leave: { transform: 'translate3d(0, 100%, 0)' },
   })
 
   const onMobileNavItemClick = itemId => {
@@ -183,15 +182,21 @@ function MobileNav({ onItemClick, selectedItem, onSelectedChange }) {
   return transitions.map(({ item, key, props }) =>
     item
       ? <>
-        <VerticalNav key={key} style={props} >
-          <button onClick={() => setShowNavContent(false)}><Icon icon={multiplyIcon} /></button>
+        <ExpandedVerticalNav key={key} style={props} >
+          <IconButton onClick={() => setShowNavContent(false)}>
+            <Icon icon={multiplyIcon} />
+            <span>Exit</span>
+          </IconButton>
           <NavContent onItemClick={onMobileNavItemClick} selectedItem={selectedItem} onSelectedChange={onSelectedChange} />
-        </VerticalNav>
+        </ExpandedVerticalNav>
         <Overlay key={`overlay-${key}`} style={props} onClick={() => setShowNavContent(false)} />
       </>
-      : <VerticalNav key={key} style={props}>
-        <button onClick={() => setShowNavContent(true)}><Icon icon={barsIcon} /></button>
-      </VerticalNav>
+      : <CollapsedVerticalNav key={key} style={props}>
+        <IconButton onClick={() => setShowNavContent(true)}>
+          <Icon icon={barsIcon} />
+          <span>Menu</span>
+        </IconButton>
+      </CollapsedVerticalNav>
   )
 }
 
