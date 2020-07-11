@@ -44,7 +44,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AppContainer device={device}>
-        <Nav onItemClick={item => setCurrentPage(item)} selectedItem={currentPage} />
+        <Nav onItemClick={item => setCurrentPage(item)} selectedItem={currentPage} onSelectedChange={id => setCurrentPage(id)} />
         <Logo wrapper={Watermark} />
         <HomePage />
         <AboutMePage />

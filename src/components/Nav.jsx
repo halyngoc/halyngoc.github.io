@@ -135,11 +135,11 @@ export function animateButtonClick(x) {
   }
 }
 
-function NavItem({ itemId, label, onClick, selected }) {
+function NavItem({ itemId, label, onClick, selected, onActive }) {
   const { x } = useSpring({ from: { x: 0 }, x: selected ? 1 : 0 })
 
   return (
-    <Link to={itemId} smooth duration={300}>
+    <Link to={itemId} smooth duration={300} spy onSetActive={() => onActive(itemId)}>
       <animated.button
         onClick={() => onClick(itemId)}
         style={selected ? animateButtonClick(x) : null}
@@ -150,18 +150,18 @@ function NavItem({ itemId, label, onClick, selected }) {
   )
 }
 
-function NavContent({ onItemClick, selectedItem }) {
+function NavContent({ onItemClick, selectedItem, onSelectedChange }) {
   return (
     <ul>
-      <li><NavItem onClick={onItemClick} selected={selectedItem === 'home'} itemId="home" label="Home" /></li>
-      <li><NavItem onClick={onItemClick} selected={selectedItem === 'about me'} itemId="about me" label="About me" /></li>
-      <li><NavItem onClick={onItemClick} selected={selectedItem === 'my work'} itemId="my work" label="My work" /></li>
-      <li><NavItem onClick={onItemClick} selected={selectedItem === 'my projects'} itemId="my projects" label="My projects" /></li>
+      <li><NavItem onClick={onItemClick} onActive={onSelectedChange} selected={selectedItem === 'home'} itemId="home" label="Home" /></li>
+      <li><NavItem onClick={onItemClick} onActive={onSelectedChange} selected={selectedItem === 'about me'} itemId="about me" label="About me" /></li>
+      <li><NavItem onClick={onItemClick} onActive={onSelectedChange} selected={selectedItem === 'my work'} itemId="my work" label="My work" /></li>
+      <li><NavItem onClick={onItemClick} onActive={onSelectedChange} selected={selectedItem === 'my projects'} itemId="my projects" label="My projects" /></li>
     </ul>
   )
 }
 
-function MobileNav({ onItemClick, selectedItem }) {
+function MobileNav({ onItemClick, selectedItem, onSelectedChange }) {
   const [showNavContent, setShowNavContent] = useState(false)
   const transitions = useTransition(showNavContent, null, {
     from: { transform: 'translate3d(0, -100%, 0)' },
@@ -179,7 +179,7 @@ function MobileNav({ onItemClick, selectedItem }) {
       ? <>
         <VerticalNav key={key} style={props}>
           <button onClick={() => setShowNavContent(false)}><Icon icon={multiplyIcon} /></button>
-          <NavContent onItemClick={onMobileNavItemClick} selectedItem={selectedItem} />
+          <NavContent onItemClick={onMobileNavItemClick} selectedItem={selectedItem} onSelectedChange={onSelectedChange} />
         </VerticalNav>
         <Overlay style={props} onClick={() => setShowNavContent(false)} />
       </>
