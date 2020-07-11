@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react'
 import { Page } from './Page'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { theme } from '../globalStyle'
 import { useDevice } from '../util'
 import { useTransition, animated } from 'react-spring'
@@ -16,13 +16,25 @@ const ProjectList = styled.ul`
   padding: 0;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
+  margin: 0;
+  width: 100%;
+  align-items: center;
+  
+  * {
+    text-align: center;
+  } 
 
   > li {
-    margin-bottom: 1rem;
+    margin: 1rem;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 20px ${theme.text}7F;
+    padding: 1rem 2rem;
+    background-color: white;
   }
 
   a {
@@ -43,38 +55,6 @@ const ProjectList = styled.ul`
     outline: none;
     box-shadow: 0 0 0 2px ${theme.text};
   }
-
-  ${({ isOneColumnLayout }) => isOneColumnLayout
-    ? css`
-      margin: 0;
-      width: 100%;
-      align-items: center;
-
-      * {
-        text-align: center;
-      }
-
-      > li {
-        flex-direction: column;
-      }
-    `
-    : css`
-      margin: 0 auto;
-      width: fit-content;
-      align-items: baseline;
-
-      * {
-        text-align: left;
-      }
-
-      > li {
-        flex-direction: row;
-      }
-
-      > li > div {
-        margin-left: 2rem;
-      }
-    `}
 `
 
 const ProjectScreenshotsSlideshowWrapper = styled.div`
@@ -85,14 +65,14 @@ const ProjectScreenshotsSlideshowWrapper = styled.div`
 
   img {
     border-radius: 1rem;
-    border: 5px solid ${theme.accent2};
+    box-shadow: 0 0 5px ${theme.text}7F;
     width: 20rem;
     height: 20rem;
     position: absolute;
     top: 0;
     left: 0;
     object-fit: cover;
-    object-position: 50% top;
+    object-position: 50 % top;
   }
 `
 
@@ -146,7 +126,7 @@ function ProjectScreenshotsSlideshow({ screenshots }) {
   return (
     <ProjectScreenshotsSlideshowWrapper isOneColumnLayout={isOneColumnLayout}>
       {transitions.map(({ item, props, key }) => {
-        return <animated.img key={`screenshot-${key}`} src={screenshots[item]} alt={screenshots[item]} draggable={false} style={props} />
+        return <animated.img key={`screenshot - ${key} `} src={screenshots[item]} alt={screenshots[item]} draggable={false} style={props} />
       })}
     </ProjectScreenshotsSlideshowWrapper>
   )
@@ -160,7 +140,7 @@ export default function MyProjectsPage() {
       <h1>My projects</h1>
       <ProjectList isOneColumnLayout={isOneColumnLayout}>
         {projectsData.map((data, key) =>
-          <li key={`project-data-${key}`}>
+          <li key={`project - data - ${key} `}>
             {data.screenshots.length > 0 && <>
               <ProjectScreenshotsSlideshow screenshots={data.screenshots} />
               <div>
