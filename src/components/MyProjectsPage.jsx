@@ -82,6 +82,22 @@ const ProjectScreenshotsSlideshowWrapper = styled.div`
   }
 `
 
+const ProjectTags = styled.li`
+  cursor: default;
+
+  > span {
+    border: 2px solid white;
+    border-radius: 1.5rem;
+    padding: 0.2rem 0.5rem;
+    margin: 0.1rem;
+  }
+
+  > span:hover {
+    background-color: white;
+    color: ${theme.text};
+  }
+`
+
 const projectsData = [
   {
     name: 'Portfolio',
@@ -91,6 +107,7 @@ const projectsData = [
     githubUrl: 'https://github.com/halyngoc/halyngoc.github.io',
     figmaUrl: 'https://www.figma.com/file/ZJE9jYg6XTdCxCOxOnSzZl/Personal-website',
     screenshots: portfolioScreenshots,
+    tags: ['React', 'react-spring', 'styled-components'],
   },
   {
     name: 'Recipedia',
@@ -100,6 +117,7 @@ const projectsData = [
     githubUrl: 'https://github.com/halyngoc/recipedia',
     figmaUrl: 'https://www.figma.com/file/NZNcO8FD5ogdTPdXzLkkQ9/Recipedia',
     screenshots: recipediaScreenshots,
+    tags: ['React', 'styled-components', 'nivo'],
   },
   {
     name: 'Kanabi UI',
@@ -109,6 +127,7 @@ const projectsData = [
     githubUrl: 'https://github.com/FireAnts-PSU-Capstone-team/cannabis-db-ui',
     figmaUrl: 'https://www.figma.com/file/Pxern1X0ZM7XLh1E9NjKGL/Cannabis-database-interface',
     screenshots: kanabiScreenshots,
+    tags: ['React', 'Material UI'],
   },
 ]
 
@@ -146,12 +165,14 @@ export default function MyProjectsPage() {
       <h1>My projects</h1>
       <ProjectList isOneColumnLayout={isOneColumnLayout}>
         {projectsData.map((data, key) =>
-          <li key={`project - data - ${key} `}>
+          <li key={`project-data-${key} `}>
             {data.screenshots.length > 0 && <>
               <ProjectScreenshotsSlideshow screenshots={data.screenshots} />
               <div>
                 <h2>{data.name}</h2>
-                <p>{data.time}</p>
+                <ProjectTags>
+                  {data.tags.map((tag, tagKey) => <span key={`project-data-${key}-tag-${tagKey}`}>{tag}</span>)}
+                </ProjectTags>
                 <p>{data.description}</p>
                 <a title="Live site" href={data.url} target="_blank" rel="noopener noreferrer">
                   <Icon icon={linkIcon} />
