@@ -24,7 +24,12 @@ const ProjectList = styled.ul`
   
   * {
     text-align: center;
-  } 
+  }
+
+  h2 {
+    color: white;
+    font-size: 1.3rem;
+  }
 
   > li {
     margin: 1rem;
@@ -33,12 +38,13 @@ const ProjectList = styled.ul`
     flex-direction: column;
     border-radius: 1rem;
     box-shadow: 5px 5px 20px ${theme.text}7F;
-    padding: 1rem 2rem;
-    background-color: white;
+    padding: 1rem;
+    background-color: ${theme.text};
+    color: white;
   }
 
   a {
-    color: ${theme.text};
+    color: white;
     text-decoration: none;
     align-items: center;
     padding: 0.25rem 0.5rem 0 0.5rem;
@@ -48,12 +54,12 @@ const ProjectList = styled.ul`
 
   a:focus, a:hover {
     outline: none;
-    box-shadow: 0 0 0 2px ${theme.text}7F;
+    box-shadow: 0 0 0 2px #ffffff7f;
   }
 
   a:active {
     outline: none;
-    box-shadow: 0 0 0 2px ${theme.text};
+    box-shadow: 0 0 0 2px white;
   }
 `
 
