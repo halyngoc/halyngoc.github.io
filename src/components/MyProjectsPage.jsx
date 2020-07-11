@@ -153,7 +153,7 @@ export default function MyProjectsPage() {
                 <h2>{data.name}</h2>
                 <p>{data.time}</p>
                 <p>{data.description}</p>
-                <a title="Deployment" href={data.url} target="_blank" rel="noopener noreferrer">
+                <a title="Live site" href={data.url} target="_blank" rel="noopener noreferrer">
                   <Icon icon={linkIcon} />
                 </a>
                 <a title="Github repository" href={data.githubUrl} target="_blank" rel="noopener noreferrer">
