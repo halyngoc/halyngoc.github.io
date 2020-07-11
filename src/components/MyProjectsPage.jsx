@@ -90,6 +90,7 @@ const ProjectTags = styled.li`
     border-radius: 1.5rem;
     padding: 0.2rem 0.5rem;
     margin: 0.1rem;
+    display: inline-block;
   }
 
   > span:hover {
