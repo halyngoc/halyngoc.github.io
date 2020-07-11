@@ -26,11 +26,6 @@ const ProjectList = styled.ul`
     text-align: center;
   }
 
-  h2 {
-    color: white;
-    font-size: 1.3rem;
-  }
-
   > li {
     margin: 1rem;
     display: flex;
@@ -39,27 +34,30 @@ const ProjectList = styled.ul`
     border-radius: 1rem;
     box-shadow: 5px 5px 20px ${theme.text}7F;
     padding: 1rem;
-    background-color: ${theme.text};
-    color: white;
+    background-color: ${theme.background2};
   }
 
   a {
-    color: white;
     text-decoration: none;
     align-items: center;
     padding: 0.25rem 0.5rem 0 0.5rem;
     border-radius: 20px;
     font-size: 2rem;
+    color: ${theme.text};
   }
 
   a:focus, a:hover {
     outline: none;
-    box-shadow: 0 0 0 2px #ffffff7f;
+    box-shadow: 0 0 0 2px ${theme.text}7f;
   }
 
   a:active {
     outline: none;
-    box-shadow: 0 0 0 2px white;
+    box-shadow: 0 0 0 2px ${theme.text};
+  }
+
+  p {
+    margin: 0.5rem 0;
   }
 `
 
@@ -67,7 +65,7 @@ const ProjectScreenshotsSlideshowWrapper = styled.div`
   width: 20rem;
   height: 20rem;
   position: relative;
-  margin: ${props => props.isOneColumnLayout ? '0 auto' : '0'};
+  margin: ${({ isOneColumnLayout }) => isOneColumnLayout ? '0 auto' : '0'};
 
   img {
     border-radius: 1rem;
@@ -78,24 +76,26 @@ const ProjectScreenshotsSlideshowWrapper = styled.div`
     top: 0;
     left: 0;
     object-fit: cover;
-    object-position: 50 % top;
+    object-position: 50% top;
   }
 `
 
-const ProjectTags = styled.li`
+const ProjectTags = styled.ul`
+  padding: 0;
   cursor: default;
+  margin-bottom: 1rem;
 
   > span {
-    border: 2px solid white;
     border-radius: 1.5rem;
     padding: 0.2rem 0.5rem;
     margin: 0.1rem;
     display: inline-block;
+    background-color: ${theme.accent}cc;
+    color: ${theme.text2};
   }
 
   > span:hover {
-    background-color: white;
-    color: ${theme.text};
+    background-color: ${theme.accent};
   }
 `
 
@@ -108,7 +108,7 @@ const projectsData = [
     githubUrl: 'https://github.com/halyngoc/halyngoc.github.io',
     figmaUrl: 'https://www.figma.com/file/ZJE9jYg6XTdCxCOxOnSzZl/Personal-website',
     screenshots: portfolioScreenshots,
-    tags: ['React', 'react-spring', 'styled-components'],
+    tags: ['react-spring', 'styled-components'],
   },
   {
     name: 'Recipedia',
@@ -118,7 +118,7 @@ const projectsData = [
     githubUrl: 'https://github.com/halyngoc/recipedia',
     figmaUrl: 'https://www.figma.com/file/NZNcO8FD5ogdTPdXzLkkQ9/Recipedia',
     screenshots: recipediaScreenshots,
-    tags: ['React', 'styled-components', 'nivo'],
+    tags: ['styled-components', 'nivo'],
   },
   {
     name: 'Kanabi UI',
@@ -128,7 +128,7 @@ const projectsData = [
     githubUrl: 'https://github.com/FireAnts-PSU-Capstone-team/cannabis-db-ui',
     figmaUrl: 'https://www.figma.com/file/Pxern1X0ZM7XLh1E9NjKGL/Cannabis-database-interface',
     screenshots: kanabiScreenshots,
-    tags: ['React', 'Material UI'],
+    tags: ['Material UI'],
   },
 ]
 
@@ -152,7 +152,13 @@ function ProjectScreenshotsSlideshow({ screenshots }) {
   return (
     <ProjectScreenshotsSlideshowWrapper isOneColumnLayout={isOneColumnLayout}>
       {transitions.map(({ item, props, key }) => {
-        return <animated.img key={`screenshot - ${key} `} src={screenshots[item]} alt={screenshots[item]} draggable={false} style={props} />
+        return <animated.img
+          key={`screenshot-${key}`}
+          src={screenshots[item]}
+          alt={screenshots[item]}
+          draggable={false}
+          style={props}
+        />
       })}
     </ProjectScreenshotsSlideshowWrapper>
   )
@@ -171,10 +177,10 @@ export default function MyProjectsPage() {
               <ProjectScreenshotsSlideshow screenshots={data.screenshots} />
               <div>
                 <h2>{data.name}</h2>
+                <p>{data.description}</p>
                 <ProjectTags>
                   {data.tags.map((tag, tagKey) => <span key={`project-data-${key}-tag-${tagKey}`}>{tag}</span>)}
                 </ProjectTags>
-                <p>{data.description}</p>
                 <a title="Live site" href={data.url} target="_blank" rel="noopener noreferrer">
                   <Icon icon={linkIcon} />
                 </a>

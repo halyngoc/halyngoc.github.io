@@ -9,8 +9,10 @@ export const breakpoints = {
 
 export const theme = {
   background: '#ECF0F1', // light blue
-  watermark: '#D7E5E9',         // light blue
-  text: '#34495E',       // dark blue 
+  background2: 'white',  // white
+  watermark: '#D7E5E9',  // light blue
+  text: '#34495E',       // dark blue
+  text2: 'white',        // white
   accent: '#3498DB',     // blue
   accent2: '#F8B500',    // yellow
 }
