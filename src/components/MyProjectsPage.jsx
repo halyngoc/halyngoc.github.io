@@ -18,7 +18,7 @@ const ProjectList = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0;
+  margin: 0 0 3rem 0;
   width: 100%;
   align-items: center;
   
