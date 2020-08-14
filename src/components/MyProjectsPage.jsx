@@ -104,7 +104,6 @@ const projectsData = [
     name: 'Portfolio',
     time: '6/2020',
     description: 'My personal website and portfolio.',
-    url: 'https://halyngoc.github.io/',
     githubUrl: 'https://github.com/halyngoc/halyngoc.github.io',
     figmaUrl: 'https://www.figma.com/file/ZJE9jYg6XTdCxCOxOnSzZl/Personal-website',
     screenshots: portfolioScreenshots,
@@ -124,7 +123,6 @@ const projectsData = [
     name: 'Kanabi UI',
     time: '1/2020 - 6/2020',
     description: 'Portal for City of Portland\'s Cannabis database.',
-    url: 'https://kanabi-gui.herokuapp.com',
     githubUrl: 'https://github.com/FireAnts-PSU-Capstone-team/cannabis-db-ui',
     figmaUrl: 'https://www.figma.com/file/Pxern1X0ZM7XLh1E9NjKGL/Cannabis-database-interface',
     screenshots: kanabiScreenshots,
@@ -181,15 +179,15 @@ export default function MyProjectsPage() {
                 <ProjectTags>
                   {data.tags.map((tag, tagKey) => <span key={`project-data-${key}-tag-${tagKey}`}>{tag}</span>)}
                 </ProjectTags>
-                <a title="Live site" href={data.url} target="_blank" rel="noopener noreferrer">
+                {data.url && <a title="Live site" href={data.url} target="_blank" rel="noopener noreferrer">
                   <Icon icon={linkIcon} />
-                </a>
-                <a title="Github repository" href={data.githubUrl} target="_blank" rel="noopener noreferrer">
+                </a>}
+                {data.githubUrl && <a title="Github repository" href={data.githubUrl} target="_blank" rel="noopener noreferrer">
                   <Icon icon={githubAlt} />
-                </a>
-                <a title="Figma prototype" href={data.figmaUrl} target="_blank" rel="noopener noreferrer">
+                </a>}
+                {data.figmaUrl && <a title="Figma prototype" href={data.figmaUrl} target="_blank" rel="noopener noreferrer">
                   <Icon icon={paletteIcon} />
-                </a>
+                </a>}
               </div>
             </>}
           </li>
