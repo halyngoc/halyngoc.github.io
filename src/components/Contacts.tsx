@@ -2,30 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { Icon } from '@iconify/react'
 import githubAlt from '@iconify/icons-uil/github-alt'
-import mailboxIcon from '@iconify/icons-uil/mailbox'
+import mailIcon from '@iconify/icons-uil/envelope-alt'
 import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
-import { Section } from './Section'
 
+const ContactList = styled.aside`
+  position: absolute;
+  top: calc(${({ theme }) => theme.spacing.columnWidth} + 1rem);
+  left: calc(${({ theme }) => theme.spacing.columnWidth} - 3.5rem);
 
-const Name = styled.div`
-  margin-top: ${({ theme }) => theme.spacing.columnWidth};
-
-  > div {
-    font-family: 'Corben', cursive;
-    font-size: 3.5rem;
-    margin-left: 0;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 2rem;
   }
-
-  > span {
-    font-size: 1.2rem;
-  }
-`
-
-const Contacts = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: inline-flex;
 
   svg {
     font-size: 2rem;
@@ -49,14 +39,10 @@ const Contacts = styled.ul`
   }
 `
 
-export default function Hero() {
+export default function Contacts() {
   return (
-    <Section>
-      <Name>
-        <div>Ha Ly</div>
-        <span>Software Engineer</span>
-      </Name>
-      <Contacts >
+    <ContactList>
+      <ul>
         <li>
           <a title="Github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
             <Icon icon={githubAlt} />
@@ -69,10 +55,10 @@ export default function Hero() {
         </li>
         <li>
           <a title="email" href="mailto:haly.inbox@gmail.com">
-            <Icon icon={mailboxIcon} />
+            <Icon icon={mailIcon} />
           </a>
         </li>
-      </Contacts>
-    </Section>
+      </ul>
+    </ContactList>
   )
 }
