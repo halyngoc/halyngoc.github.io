@@ -10,6 +10,7 @@ const ExperienceList = styled.ul`
   width: fit-content;
   max-width: calc(100% - 3rem);
   position: relative;
+  left: -3rem;
 
   ::before {
     content: ' ';
