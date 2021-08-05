@@ -4,9 +4,7 @@ import { theme } from '../globalStyle'
 import { Icon } from '@iconify/react'
 import githubAlt from '@iconify/icons-uil/github-alt'
 import envelopeIcon from '@iconify/icons-uil/envelope'
-import fileIcon from '@iconify/icons-uil/file'
 import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
-import resume from '../resume.pdf'
 import { useDevice } from '../util'
 import { Page } from './Page'
 
@@ -90,12 +88,6 @@ export default function HomePage() {
           <a title="email" href="mailto:haly.inbox@gmail.com">
             <Icon icon={envelopeIcon} />
             haly.inbox@gmail.com
-          </a>
-        </li>
-        <li>
-          <a title="resume" href={resume} download="Ha_Ly_resume" target="_blank" rel="noopener noreferrer">
-            <Icon icon={fileIcon} />
-            resume (pdf, 64kb)
           </a>
         </li>
       </Contacts>
