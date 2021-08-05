@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, DefaultTheme } from 'styled-components'
 
 export const breakpoints = {
   mobile: 600,
@@ -7,14 +7,16 @@ export const breakpoints = {
   desktop: 1920,
 }
 
-export const theme = {
-  background: '#ECF0F1',  // light blue
-  background2: '#FFFFFF', // white
-  watermark: '#D7E5E9',   // light blue
-  text: '#34495E',        // dark blue
-  text2: '#FFFFFF',       // white
-  accent: '#3498DB',      // blue
-  accent2: '#F8B500',     // yellow
+export const defaultTheme: DefaultTheme = {
+  palette: {
+    background: '#EEEEEE',
+    text: '#2F576E',
+  },
+  spacing: {
+    numberOfColumns: 12,
+    columnWidth: 'calc(100vw / 12)',
+    sectionMargin: '0 calc(100vw / 12)',
+  },
 }
 
 export const GlobalStyles = createGlobalStyle`
@@ -22,7 +24,7 @@ export const GlobalStyles = createGlobalStyle`
   *::after,
   *::before {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -30,8 +32,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.palette.background};
+    color: ${({ theme }) => theme.palette.text};
     margin: 0;
   }
 
@@ -44,12 +46,12 @@ export const GlobalStyles = createGlobalStyle`
     background: none;
   }
   *::-webkit-scrollbar-thumb {
-    background-color: ${({ theme }) => theme.text};
+    background-color: ${({ theme }) => theme.palette.text};
     border-radius: 10px;
     border: none;
   }
   * {
     scrollbar-width: thin;
-    scrollbar-color: ${({ theme }) => theme.text + ' #ffffff00'};
+    scrollbar-color: ${({ theme }) => theme.palette.text + ' #ffffff00'};
   }
 `
