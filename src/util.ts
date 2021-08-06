@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import { breakpoints } from './globalStyle'
 
-export function useWindowWidth() {
+type Device = 'mobile' | 'tablet' | 'laptop' | 'desktop'
+
+function useWindowWidth(): number {
   const [width, setWidth] = useState(window.innerWidth)
 
   useEffect(() => {
@@ -13,16 +15,11 @@ export function useWindowWidth() {
   return width
 }
 
-const isOneColumnLayout = device => device === 'mobile' || device === 'tablet'
-
-export function useDevice() {
+export function useDevice(): Device {
   const windowWidth = useWindowWidth()
-  let device = ''
 
-  if (windowWidth < breakpoints.mobile) device = 'mobile'
-  else if (windowWidth < breakpoints.tablet) device = 'tablet'
-  else if (windowWidth < breakpoints.laptop) device = 'laptop'
-  else device = 'desktop'
-
-  return [device, isOneColumnLayout(device)]
+  if (windowWidth < breakpoints.mobile) return 'mobile'
+  else if (windowWidth < breakpoints.tablet) return 'tablet'
+  else if (windowWidth < breakpoints.laptop) return 'laptop'
+  else return 'desktop'
 }

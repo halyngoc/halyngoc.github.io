@@ -16,7 +16,7 @@ export const defaultTheme: DefaultTheme = {
     numberOfColumns: 12,
     columnWidth: 'calc(100vw / 12)',
     appTopMargin: 'calc(100vw / 12)',
-    sectionMargin: '4rem calc(100vw / 12)',
+    sectionMargin: '0 calc(100vw / 12) 4rem calc(100vw / 12)',
   },
 }
 

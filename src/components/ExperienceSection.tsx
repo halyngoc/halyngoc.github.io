@@ -2,8 +2,9 @@ import React from 'react'
 import { Section } from './Section'
 import styled from 'styled-components'
 import { experience } from '../data'
+import { useDevice } from '../util'
 
-const ExperienceList = styled.ul`
+const List = styled.ul`
   list-style: none;
   padding: 0;
   margin-left: 1rem;
@@ -12,6 +13,17 @@ const ExperienceList = styled.ul`
   position: relative;
   left: -3rem;
 
+  p {
+    margin: 0.75rem 0;
+  }
+
+  > li {
+    position: relative;
+    margin: 0 0 2rem 2rem;
+  }
+`
+
+const ListWithTimeline = styled(List)`
   ::before {
     content: ' ';
     position: absolute;
@@ -20,15 +32,6 @@ const ExperienceList = styled.ul`
     width: 5px;
     height: 100%;
     background-color: ${({ theme }) => theme.palette.text};
-  }
-
-  p {
-    margin: 0.75rem 0;
-  }
-
-  > li {
-    position: relative;
-    margin: 0 0 2rem 2rem;
   }
 
   > li::before {
@@ -45,6 +48,9 @@ const ExperienceList = styled.ul`
 `
 
 export default function ExperienceSection() {
+  const device = useDevice()
+  const ExperienceList = device === 'mobile' ? List : ListWithTimeline
+
   return (
     <Section>
       <h1>Experience</h1>

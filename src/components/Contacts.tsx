@@ -5,11 +5,11 @@ import githubAlt from '@iconify/icons-uil/github-alt'
 import mailIcon from '@iconify/icons-uil/envelope-alt'
 import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
 import Link from './Link'
+import { useDevice } from '../util'
 
-const ContactList = styled.aside`
+const List = styled.aside`
   position: absolute;
   top: calc(${({ theme }) => theme.spacing.appTopMargin} + 1rem);
-  left: calc(${({ theme }) => theme.spacing.columnWidth} - 3.5rem);
 
   ul {
     list-style: none;
@@ -41,7 +41,19 @@ const ContactList = styled.aside`
   }
 `
 
+const ListRight = styled(List)`
+  right: ${({ theme }) => theme.spacing.columnWidth};
+`
+
+const ListLeft = styled(List)`
+  left: calc(${({ theme }) => theme.spacing.columnWidth} - 3.5rem);
+`
+
 export default function Contacts() {
+  const device = useDevice()
+  const ContactList =
+    device === 'mobile' || device === 'tablet' ? ListRight : ListLeft
+
   return (
     <ContactList>
       <ul>
