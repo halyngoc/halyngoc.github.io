@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import githubAlt from '@iconify/icons-uil/github-alt'
 import mailIcon from '@iconify/icons-uil/envelope-alt'
 import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
+import Link from './Link'
 
 const ContactList = styled.aside`
   position: absolute;
@@ -28,7 +29,8 @@ const ContactList = styled.aside`
     border-radius: 20px;
   }
 
-  a:focus, a:hover {
+  a:focus,
+  a:hover {
     outline: none;
     box-shadow: 0 0 0 0 ${({ theme }) => theme.palette.text}7F;
   }
@@ -44,19 +46,19 @@ export default function Contacts() {
     <ContactList>
       <ul>
         <li>
-          <a title="Github" href="https://github.com/halyngoc" target="_blank" rel="noopener noreferrer">
+          <Link title="Github" href="https://github.com/halyngoc">
             <Icon icon={githubAlt} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a title="LinkedIn" href="https://www.linkedin.com/in/halyngoc" target="_blank" rel="noopener noreferrer">
+          <Link title="LinkedIn" href="https://www.linkedin.com/in/halyngoc">
             <Icon icon={linkedinAlt} />
-          </a>
+          </Link>
         </li>
         <li>
-          <a title="email" href="mailto:haly.inbox@gmail.com">
+          <Link title="email" href="mailto:haly.inbox@gmail.com">
             <Icon icon={mailIcon} />
-          </a>
+          </Link>
         </li>
       </ul>
     </ContactList>
