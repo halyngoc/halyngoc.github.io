@@ -3,5 +3,6 @@
     "Kanabi",
     "Recipedia",
     "linkedin"
-  ]
+  ],
+  "todo-tree.tree.scanMode": "workspace only"
 }
