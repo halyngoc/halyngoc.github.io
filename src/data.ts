@@ -17,7 +17,6 @@ type Project = {
   time: string
   description: string
   url?: string
-  figmaUrl?: string
 }
 
 type Other = {
