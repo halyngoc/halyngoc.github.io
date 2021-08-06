@@ -2,7 +2,7 @@ import React from 'react'
 import { Section, SectionItem } from './Section'
 import { educations } from '../data'
 
-export default function EducationSection() {
+export default function Education() {
   return (
     <Section>
       <h1>Education</h1>

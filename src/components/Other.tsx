@@ -2,7 +2,7 @@ import React from 'react'
 import { Section } from './Section'
 import { other } from '../data'
 
-export default function OtherSection() {
+export default function Other() {
   return (
     <Section>
       <h1>Other</h1>

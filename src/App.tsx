@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Section } from './components/Section'
-import ExperienceSection from './components/ExperienceSection'
-import SkillsSection from './components/SkillsSection'
-import ProjectsSection from './components/ProjectsSection'
-import EducationSection from './components/EducationSection'
-import OtherSection from './components/OtherSection'
+import Experience from './components/Experience'
+import Skills from './components/Skills'
+import Projects from './components/Projects'
+import Education from './components/Education'
+import Other from './components/Other'
 import Contacts from './components/Contacts'
 
-const AppContainer = styled.main`
+const Main = styled.main`
   margin: ${({ theme }) => theme.spacing.appTopMargin} 0;
 `
 
@@ -26,17 +26,17 @@ const NameSection = styled(Section)`
 
 export default function App() {
   return (
-    <AppContainer>
+    <Main>
       <NameSection>
         <div>Ha Ly</div>
         <span>Software Engineer</span>
       </NameSection>
       <Contacts />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <EducationSection />
-      <OtherSection />
-    </AppContainer>
+      <Skills />
+      <Experience />
+      <Projects />
+      <Education />
+      <Other />
+    </Main>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Section, SectionItem } from './Section'
 import { skills } from '../data'
 
-export default function SkillsSection() {
+export default function Skills() {
   return (
     <Section>
       <h1>Skills</h1>

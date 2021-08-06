@@ -49,7 +49,7 @@ const ExperienceList = styled.ul<{ withTimeline: boolean }>`
     `}
 `
 
-export default function ExperienceSection() {
+export default function Experience() {
   const device = useDevice()
   return (
     <Section>

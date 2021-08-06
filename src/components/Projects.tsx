@@ -18,7 +18,7 @@ const Project = styled(SectionItem)`
   }
 `
 
-export default function ProjectsSection() {
+export default function Projects() {
   return (
     <Section>
       <h1>Projects</h1>
