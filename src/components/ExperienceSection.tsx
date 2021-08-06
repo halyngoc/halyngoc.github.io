@@ -49,15 +49,17 @@ export default function ExperienceSection() {
     <Section>
       <h1>Experience</h1>
       <ExperienceList>
-        {experience.map(data =>
+        {experience.map(data => (
           <li key={data.title + data.place}>
             <h2>{data.title}</h2>
             <p>{data.place}</p>
             <p>{data.time}</p>
             {data.description && <p>{data.description}</p>}
-            <p><i>{data.tools.join(', ')}</i></p>
+            <p>
+              <i>{data.tools.join(', ')}</i>
+            </p>
           </li>
-        )}
+        ))}
       </ExperienceList>
     </Section>
   )
