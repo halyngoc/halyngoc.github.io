@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import ExperienceSection from './components/ExperienceSection'
 import SkillsSection from './components/SkillsSection'
 import ProjectsSection from './components/ProjectsSection'
+import EducationSection from './components/EducationSection'
 import OtherSection from './components/OtherSection'
 import Contacts from './components/Contacts'
 
@@ -33,6 +34,7 @@ export default function App() {
       <SkillsSection />
       <ExperienceSection />
       <ProjectsSection />
+      <EducationSection />
       <OtherSection />
     </main>
   )

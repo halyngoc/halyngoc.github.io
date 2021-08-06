@@ -26,6 +26,12 @@ type Other = {
   time?: string
 }
 
+type Education = {
+  title: string
+  school: string
+  place: string
+  time: string
+}
 
 export const skills: Skills = {
   languages: ['Go', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Python', 'C/C++'],
@@ -76,3 +82,18 @@ export const other: Other = {
   description: 'Member of PSU Viking Robotics Society',
   time: '4/2018 - 3/2020',
 }
+
+export const educations: Education[] = [
+  {
+    title: 'BS Computer Science',
+    school: 'Portland State University',
+    place: 'Portland, OR',
+    time: '3/2018 - 6/2020'
+  },
+  {
+    title: 'Computer Science',
+    school: 'Portland Community College',
+    place: 'Portland, OR',
+    time: '3/2016 - 6/2018'
+  },
+]
