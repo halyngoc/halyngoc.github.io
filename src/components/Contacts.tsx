@@ -15,29 +15,38 @@ const List = styled.aside`
     list-style: none;
     padding: 0;
     margin: 0;
-    line-height: 2rem;
   }
 
   svg {
+    height: 2.5rem;
+  }
+
+  li {
+    margin: 0 1rem 0.5rem 0;
     font-size: 2rem;
   }
 
   a {
     color: ${({ theme }) => theme.palette.text};
     text-decoration: none;
-    margin-right: 1rem;
     border-radius: 20px;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
   }
 
   a:focus,
-  a:hover {
-    outline: none;
-    box-shadow: 0 0 0 0 ${({ theme }) => theme.palette.text}7F;
-  }
-
+  a:focus-visible,
+  a:hover,
   a:active {
     outline: none;
     box-shadow: 0 0 0 2px ${({ theme }) => theme.palette.text};
+  }
+
+  a:active {
+    color: ${({ theme }) => theme.palette.background};
+    background-color: ${({ theme }) => theme.palette.text};
   }
 `
 
