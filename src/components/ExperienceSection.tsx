@@ -1,10 +1,10 @@
 import React from 'react'
+import styled, { css } from 'styled-components'
 import { Section } from './Section'
-import styled from 'styled-components'
 import { experience } from '../data'
 import { useDevice } from '../util'
 
-const List = styled.ul`
+const ExperienceList = styled.ul<{ withTimeline: boolean }>`
   list-style: none;
   padding: 0;
   margin-left: 1rem;
@@ -21,40 +21,40 @@ const List = styled.ul`
     position: relative;
     margin: 0 0 2rem 2rem;
   }
-`
 
-const ListWithTimeline = styled(List)`
-  ::before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: -2.5px;
-    width: 5px;
-    height: 100%;
-    background-color: ${({ theme }) => theme.palette.text};
-  }
+  ${({ withTimeline }) =>
+    withTimeline &&
+    css`
+      ::before {
+        content: ' ';
+        position: absolute;
+        top: 0;
+        left: -2.5px;
+        width: 5px;
+        height: 100%;
+        background-color: ${({ theme }) => theme.palette.text};
+      }
 
-  > li::before {
-    content: ' ';
-    position: absolute;
-    top: -0.2rem;
-    left: -3rem;
-    width: 2rem;
-    height: 2rem;
-    border: 5px solid ${({ theme }) => theme.palette.text};
-    background-color: ${({ theme }) => theme.palette.background};
-    border-radius: 1rem;
-  }
+      > li::before {
+        content: ' ';
+        position: absolute;
+        top: -0.2rem;
+        left: -3rem;
+        width: 2rem;
+        height: 2rem;
+        border: 5px solid ${({ theme }) => theme.palette.text};
+        background-color: ${({ theme }) => theme.palette.background};
+        border-radius: 1rem;
+      }
+    `}
 `
 
 export default function ExperienceSection() {
   const device = useDevice()
-  const ExperienceList = device === 'mobile' ? List : ListWithTimeline
-
   return (
     <Section>
       <h1>Experience</h1>
-      <ExperienceList>
+      <ExperienceList withTimeline={device !== 'mobile'}>
         {experience.map(data => (
           <li key={data.title + data.place}>
             <h2>{data.title}</h2>

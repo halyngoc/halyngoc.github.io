@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Icon } from '@iconify/react'
 import githubAlt from '@iconify/icons-uil/github-alt'
 import mailIcon from '@iconify/icons-uil/envelope-alt'
@@ -7,7 +7,7 @@ import linkedinAlt from '@iconify/icons-uil/linkedin-alt'
 import Link from './Link'
 import { useDevice } from '../util'
 
-const List = styled.aside`
+const ContactList = styled.aside<{ position: 'right' | 'left' }>`
   position: absolute;
   top: calc(${({ theme }) => theme.spacing.appTopMargin} + 1rem);
 
@@ -48,23 +48,23 @@ const List = styled.aside`
     color: ${({ theme }) => theme.palette.background};
     background-color: ${({ theme }) => theme.palette.text};
   }
-`
 
-const ListRight = styled(List)`
-  right: ${({ theme }) => theme.spacing.columnWidth};
-`
-
-const ListLeft = styled(List)`
-  left: calc(${({ theme }) => theme.spacing.columnWidth} - 3.5rem);
+  ${({ position }) =>
+    position === 'right'
+      ? css`
+          right: ${({ theme }) => theme.spacing.columnWidth};
+        `
+      : css`
+          left: calc(${({ theme }) => theme.spacing.columnWidth} - 3.5rem);
+        `}
 `
 
 export default function Contacts() {
   const device = useDevice()
-  const ContactList =
-    device === 'mobile' || device === 'tablet' ? ListRight : ListLeft
-
   return (
-    <ContactList>
+    <ContactList
+      position={device === 'mobile' || device === 'tablet' ? 'right' : 'left'}
+    >
       <ul>
         <li>
           <Link title="Github" href="https://github.com/halyngoc">
