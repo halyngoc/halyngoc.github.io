@@ -15,7 +15,8 @@ export const defaultTheme: DefaultTheme = {
   spacing: {
     numberOfColumns: 12,
     columnWidth: 'calc(100vw / 12)',
-    sectionMargin: '0 calc(100vw / 12)',
+    appTopMargin: 'calc(100vw / 12)',
+    sectionMargin: '4rem calc(100vw / 12)',
   },
 }
 

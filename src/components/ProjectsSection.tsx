@@ -1,12 +1,12 @@
 import React from 'react'
-import { Section } from './Section'
+import { Section, SectionItem } from './Section'
 import { projects } from '../data'
 import linkIcon from '@iconify/icons-uil/external-link-alt'
 import InlineIcon from '@iconify/react'
 import styled from 'styled-components'
 import Link from './Link'
 
-const Project = styled.div`
+const Project = styled(SectionItem)`
   h2 {
     display: inline;
     margin-right: 0.4rem;
@@ -15,10 +15,6 @@ const Project = styled.div`
 
   svg {
     transform: translateY(0.1rem) !important;
-  }
-
-  p:last-child {
-    margin-bottom: 2rem;
   }
 `
 

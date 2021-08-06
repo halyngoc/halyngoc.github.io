@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Section = styled.section`
-  padding: 0 0 2rem 0;
   margin: ${({ theme }) => theme.spacing.sectionMargin};
 
   h1 {
@@ -13,4 +12,8 @@ export const Section = styled.section`
     font-weight: semibold;
     font-size: 1rem;
   }
+`
+
+export const SectionItem = styled.div`
+  margin-bottom: 2rem;
 `

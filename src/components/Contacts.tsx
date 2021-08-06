@@ -8,7 +8,7 @@ import Link from './Link'
 
 const ContactList = styled.aside`
   position: absolute;
-  top: calc(${({ theme }) => theme.spacing.columnWidth} + 1rem);
+  top: calc(${({ theme }) => theme.spacing.appTopMargin} + 1rem);
   left: calc(${({ theme }) => theme.spacing.columnWidth} - 3.5rem);
 
   ul {

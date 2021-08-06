@@ -8,6 +8,7 @@ declare module 'styled-components' {
     }
     spacing: {
       numberOfColumns: number
+      appTopMargin: string
       sectionMargin: string
       columnWidth: string
     }

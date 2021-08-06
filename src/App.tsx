@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Section } from './components/Section'
 import ExperienceSection from './components/ExperienceSection'
 import SkillsSection from './components/SkillsSection'
 import ProjectsSection from './components/ProjectsSection'
@@ -7,25 +8,25 @@ import EducationSection from './components/EducationSection'
 import OtherSection from './components/OtherSection'
 import Contacts from './components/Contacts'
 
-const NameSection = styled.section`
-  padding: 0 0 2rem 0;
-  margin: ${({ theme }) => theme.spacing.sectionMargin};
-  margin-top: ${({ theme }) => theme.spacing.columnWidth};
+const AppContainer = styled.main`
+  margin: ${({ theme }) => theme.spacing.appTopMargin} 0;
+`
 
-  > div {
+const NameSection = styled(Section)`
+  div {
     font-family: 'Corben', cursive;
     font-size: 3.5rem;
     margin-left: 0;
   }
 
-  > span {
+  span {
     font-size: 1.2rem;
   }
 `
 
 export default function App() {
   return (
-    <main>
+    <AppContainer>
       <NameSection>
         <div>Ha Ly</div>
         <span>Software Engineer</span>
@@ -36,6 +37,6 @@ export default function App() {
       <ProjectsSection />
       <EducationSection />
       <OtherSection />
-    </main>
+    </AppContainer>
   )
 }
