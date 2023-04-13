@@ -1,8 +1,8 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { Section } from './Section'
-import { experience } from '../data'
-import { useDevice } from '../util'
+import React from "react";
+import styled, { css } from "styled-components";
+import { Section } from "./Section";
+import { experience } from "../data";
+import { useDevice } from "../util";
 
 const ExperienceList = styled.ul<{ withTimeline: boolean }>`
   list-style: none;
@@ -13,8 +13,8 @@ const ExperienceList = styled.ul<{ withTimeline: boolean }>`
   position: relative;
   left: -3rem;
 
-  p {
-    margin: 0.75rem 0;
+  h2 > span {
+    font-weight: normal;
   }
 
   > li {
@@ -26,7 +26,7 @@ const ExperienceList = styled.ul<{ withTimeline: boolean }>`
     withTimeline &&
     css`
       ::before {
-        content: ' ';
+        content: " ";
         position: absolute;
         top: 0;
         left: -2.5px;
@@ -36,7 +36,7 @@ const ExperienceList = styled.ul<{ withTimeline: boolean }>`
       }
 
       > li::before {
-        content: ' ';
+        content: " ";
         position: absolute;
         top: -0.2rem;
         left: -3rem;
@@ -47,26 +47,28 @@ const ExperienceList = styled.ul<{ withTimeline: boolean }>`
         border-radius: 1rem;
       }
     `}
-`
+`;
 
 export default function Experience() {
-  const device = useDevice()
+  const device = useDevice();
   return (
     <Section>
       <h1>Experience</h1>
-      <ExperienceList withTimeline={device !== 'mobile'}>
-        {experience.map(data => (
+      <ExperienceList withTimeline={device !== "mobile"}>
+        {experience.map((data) => (
           <li key={data.title + data.place}>
-            <h2>{data.title}</h2>
-            <p>{data.place}</p>
+            <h2>
+              {data.title}
+              <span> - {data.place}</span>
+            </h2>
             <p>{data.time}</p>
             {data.description && <p>{data.description}</p>}
             <p>
-              <i>{data.tools.join(', ')}</i>
+              <i>{data.tools.join(", ")}</i>
             </p>
           </li>
         ))}
       </ExperienceList>
     </Section>
-  )
+  );
 }

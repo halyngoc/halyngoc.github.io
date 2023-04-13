@@ -1,10 +1,8 @@
-import React from 'react'
-import { Section, SectionItem } from './Section'
-import { projects } from '../data'
-import linkIcon from '@iconify/icons-uil/external-link-alt'
-import InlineIcon from '@iconify/react'
-import styled from 'styled-components'
-import Link from './Link'
+import React from "react";
+import { Section, SectionItem } from "./Section";
+import { projects } from "../data";
+import styled from "styled-components";
+import Link from "./Link";
 
 const Project = styled(SectionItem)`
   h2 {
@@ -16,18 +14,17 @@ const Project = styled(SectionItem)`
   svg {
     transform: translateY(0.1rem) !important;
   }
-`
+`;
 
 export default function Projects() {
   return (
     <Section>
       <h1>Projects</h1>
-      {projects.map(project => (
+      {projects.map((project) => (
         <Project key={project.title}>
           {project.url ? (
-            <Link title="GitHub" href={project.url}>
+            <Link label="GitHub" url={project.url}>
               <h2>{project.title}</h2>
-              <InlineIcon icon={linkIcon} />
             </Link>
           ) : (
             <h2>{project.title}</h2>
@@ -38,5 +35,5 @@ export default function Projects() {
         </Project>
       ))}
     </Section>
-  )
+  );
 }
